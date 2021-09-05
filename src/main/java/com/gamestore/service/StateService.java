@@ -8,32 +8,32 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gamestore.model.Product;
-import com.gamestore.repository.ProductRepository;
+import com.gamestore.model.State;
+import com.gamestore.repository.StateRepository;
 import com.gamestore.service.exceptions.ResourceNotFoundException;
 
 @Service
-public class ProductService {
+public class StateService {
 	
 	@Autowired
-	private ProductRepository repository;
+	private StateRepository repository;
 	
-	public List<Product> findAll() {
+	public List<State> findAll() {
 		return repository.findAll();
 	}
 	
-	public Product findById(Long id) {
+	public State findById(Long id) {
 		return repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException(id));
 	}	 
 	
-	public Product insert(Product obj) {
+	public State insert(State obj) {
 		return repository.save(obj);
 	}
 	
-	public Product update(Long id, Product obj) {
+	public State update(Long id, State obj) {
 		try {
-			Optional<Product> entity = repository.findById(id);
+			Optional<State> entity = repository.findById(id);
 			updateData(entity.get(), obj);
 			return repository.save(entity.get());
 		} catch (EntityNotFoundException e) {
@@ -41,12 +41,7 @@ public class ProductService {
 		}
 	}
 	
-	private void updateData(Product entity, Product obj) {
-		entity.setTitle(obj.getTitle());
-		entity.setDescription(obj.getDescription());
-		entity.setImageUrl(obj.getImageUrl());
-		entity.setCostPrice(obj.getCostPrice());
-		entity.setSellPrice(obj.getSellPrice());
-		entity.setQuantity(obj.getQuantity());
+	private void updateData(State entity, State obj) {
+		// falta implementar
 	}
 }
