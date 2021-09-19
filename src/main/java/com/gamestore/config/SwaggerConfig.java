@@ -31,7 +31,7 @@ public class SwaggerConfig {
 		return new ApiInfoBuilder()
 				.title("API Game Store")
 				.description("API para o e-commerce da Game Store.")
-				.version("MVP - 0.0.1")
+				.version("1.2.0")
 				.build();
 	}
 

@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,6 +31,8 @@ public class Client implements Serializable {
 	private String name;
 	
 	@NotBlank
+	@Email
+	@Column(unique = true)
 	private String email;
 	
 	@NotBlank
@@ -36,6 +40,8 @@ public class Client implements Serializable {
 	
 	@NotBlank
 	private String cpf;
+	
+	private boolean isAdmin;
 	
 	@OneToMany(mappedBy="client")
 	private List<Address> addresses = new ArrayList<>();
@@ -86,6 +92,14 @@ public class Client implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 	
 	public List<Address> getAddresses() {
