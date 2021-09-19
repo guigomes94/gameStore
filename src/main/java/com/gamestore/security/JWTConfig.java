@@ -14,7 +14,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.gamestore.service.DetailUserServiceImpl;
 
-@EnableWebSecurity
+// @EnableWebSecurity
 public class JWTConfig extends WebSecurityConfigurerAdapter {
 
 	private final DetailUserServiceImpl service;
